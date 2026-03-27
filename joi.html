@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Join Us | Brandify – Create Account</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0F;
+            color: #E5E5E5;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Announcement Bar */
+        .announcement {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #1A1A2A;
+            color: #FFD966;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255, 217, 102, 0.2);
+            z-index: 1000;
+        }
+
+        .announcement-track {
+            display: inline-block;
+            animation: scrollMarquee 20s linear infinite;
+            padding-left: 20px;
+        }
+
+        .announcement-track i {
+            margin: 0 12px;
+            color: #FFD966;
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Join Container */
+        .join-container {
+            max-width: 500px;
+            width: 90%;
+            margin: 80px auto 40px;
+            background: #13131F;
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid #2A2A35;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo a {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFD966, #FF9F4A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .join-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .join-header .badge {
+            display: inline-block;
+            background: rgba(255, 217, 102, 0.12);
+            padding: 5px 15px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            color: #FFD966;
+            margin-bottom: 15px;
+        }
+
+        .join-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+
+        .join-header p {
+            font-size: 0.85rem;
+            color: #9AAEBF;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: #0A0A12;
+            border: 1px solid #2E2E3A;
+            border-radius: 16px;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #FFD966;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .checkbox-group input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: #FFD966;
+        }
+
+        .checkbox-group label {
+            color: #9AAEBF;
+            font-size: 0.8rem;
+        }
+
+        .checkbox-group a {
+            color: #FFD966;
+            text-decoration: none;
+        }
+
+        .join-btn {
+            background: #FFD966;
+            color: #0A0A0F;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .join-btn:hover {
+            background: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* Divider */
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 42%;
+            height: 1px;
+            background: #2A2A35;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider span {
+            background: #13131F;
+            padding: 0 12px;
+            color: #9AAEBF;
+            font-size: 0.8rem;
+        }
+
+        /* Social Login Buttons */
+        .social-login {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            border: none;
+        }
+
+        .google-btn {
+            background: #FFFFFF;
+            color: #1F1F2A;
+            border: 1px solid #E0E0E0;
+        }
+
+        .google-btn:hover {
+            background: #F5F5F5;
+            transform: translateY(-2px);
+        }
+
+        .facebook-btn {
+            background: #1877f2;
+            color: white;
+        }
+
+        .facebook-btn:hover {
+            background: #166fe5;
+            transform: translateY(-2px);
+        }
+
+        .social-btn i {
+            font-size: 1.1rem;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: #9AAEBF;
+        }
+
+        .login-link a {
+            color: #FFD966;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 550px) {
+            .join-container {
+                padding: 25px;
+                margin: 70px auto 30px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .social-login {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .logo a {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement">
+        <div class="announcement-track">
+            <i class="fas fa-star"></i> ✨ Join Brandify Today & Get 15% OFF on Your First Project! ✨ 
+            <i class="fas fa-palette"></i> Limited Time Offer – Sign Up Now! 
+            <i class="fas fa-arrow-right"></i> ✨ Join Brandify Today & Get 15% OFF on Your First Project! ✨
+        </div>
+    </div>
+
+    <!-- Join Container -->
+    <div class="join-container">
+        <!-- Logo Inside Container -->
+        <div class="logo">
+            <a href="index.html">BRANDIFY</a>
+        </div>
+
+        <div class="join-header">
+            <div class="badge">✦ JOIN THE COMMUNITY ✦</div>
+            <h1>Create Account</h1>
+            <p>Join Brandify and start your creative journey</p>
+        </div>
+
+        <form id="joinForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" id="fullName" placeholder="Full Name *" required>
+                </div>
+                <div class="form-group">
+                    <select id="gender" required>
+                        <option value="">Gender *</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email Address *" required>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" id="phone" placeholder="Phone Number *" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password *" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password *" required>
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+            </div>
+
+            <button type="submit" class="join-btn">Sign Up <i class="fas fa-arrow-right"></i></button>
+        </form>
+
+        <!-- Divider -->
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <!-- Social Login Buttons - Submit Button Ke Neeche -->
+        <div class="social-login">
+            <button class="social-btn google-btn" id="googleSignUp">
+                <i class="fab fa-google"></i>  Google
+            </button>
+            <button class="social-btn facebook-btn" id="facebookSignUp">
+                <i class="fab fa-facebook-f"></i> Facebook
+            </button>
+        </div>
+
+        <div class="login-link">
+            Already have an account? <a href="log.html">Log in here</a>
+        </div>
+    </div>
+
+    <script>
+        // Google Sign Up - Opens Google Accounts Page
+        document.getElementById('googleSignUp').addEventListener('click', function() {
+            window.open('https://accounts.google.com/AccountChooser', '_blank');
+            alert("🔐 Google Sign Up\n\nYou will be redirected to Google Accounts page.\n\nSelect your Google account to continue.\n\nAfter login, you'll be redirected back to Brandify.");
+        });
+        
+        // Facebook Sign Up - Opens Facebook Login Page
+        document.getElementById('facebookSignUp').addEventListener('click', function() {
+            window.open('https://www.facebook.com/login.php', '_blank');
+            alert("🔐 Facebook Sign Up\n\nYou will be redirected to Facebook login page.\n\nEnter your Facebook credentials to continue.\n\nAfter login, you'll be redirected back to Brandify.");
+        });
+        
+        // Email/Password Form Submission
+        const joinForm = document.getElementById('joinForm');
+        
+        joinForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const gender = document.getElementById('gender').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+            
+            // Validations
+            if (!fullName || !gender || !email || !phone || !password || !confirmPassword) {
+                alert("❌ Please fill in all required fields.");
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert("❌ Passwords do not match!");
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert("❌ Password must be at least 6 characters.");
+                return;
+            }
+            
+            if (!terms) {
+                alert("❌ Please agree to the Terms & Conditions.");
+                return;
+            }
+            
+            // Phone number validation (Pakistan format)
+            const phoneRegex = /^03[0-9]{9}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("❌ Please enter a valid Pakistani phone number (e.g., 03001234567)");
+                return;
+            }
+            
+            // Success message
+            alert(`🎉 Welcome ${fullName}!\n\n✅ Account created successfully!\n\n📧 Email: ${email}\n📱 Phone: ${phone}\n👤 Gender: ${gender}\n\n✨ Start your creative journey with Brandify!`);
+            
+            joinForm.reset();
+        });
+        
+        // Login link
+        // document.querySelector('.login-link a').addEventListener('click', function(e) {
+        //     e.preventDefault();
+        //     alert("🔐 Login Page\n\nPlease enter your credentials to login.\n\n(Login page coming soon)");
+        // });
+        
+        // Terms & Conditions link
+        document.querySelector('.checkbox-group a').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert("📜 Terms & Conditions\n\n1. You must be 18+ years old\n2. All designs are property of Brandify until payment\n3. 14-day refund policy applies\n4. Your privacy is respected\n\nFull terms will be available soon.");
+        });
+    </script>
+</body>
+</html>

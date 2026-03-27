@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Forgot Password | Brandify – Reset Your Password</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0F;
+            color: #E5E5E5;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Announcement Bar */
+        .announcement {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #1A1A2A;
+            color: #FFD966;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255, 217, 102, 0.2);
+            z-index: 1000;
+        }
+
+        .announcement-track {
+            display: inline-block;
+            animation: scrollMarquee 20s linear infinite;
+            padding-left: 20px;
+        }
+
+        .announcement-track i {
+            margin: 0 12px;
+            color: #FFD966;
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Forgot Password Container */
+        .forgot-container {
+            max-width: 480px;
+            width: 90%;
+            margin: 80px auto 40px;
+            background: #13131F;
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid #2A2A35;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo a {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFD966, #FF9F4A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .forgot-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .forgot-header .badge {
+            display: inline-block;
+            background: rgba(255, 217, 102, 0.12);
+            padding: 5px 15px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            color: #FFD966;
+            margin-bottom: 15px;
+        }
+
+        .forgot-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+        }
+
+        .forgot-header p {
+            font-size: 0.85rem;
+            color: #9AAEBF;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            background: #0A0A12;
+            border: 1px solid #2E2E3A;
+            border-radius: 20px;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #FFD966;
+        }
+
+        .reset-btn {
+            background: #FFD966;
+            color: #0A0A0F;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .reset-btn:hover {
+            background: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        .back-to-login {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-to-login a {
+            color: #9AAEBF;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .back-to-login a:hover {
+            color: #FFD966;
+        }
+
+        .info-box {
+            background: rgba(255, 217, 102, 0.08);
+            border-radius: 20px;
+            padding: 16px;
+            margin-top: 25px;
+            border: 1px solid rgba(255, 217, 102, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-box i {
+            font-size: 1.2rem;
+            color: #FFD966;
+        }
+
+        .info-box p {
+            font-size: 0.75rem;
+            color: #9AAEBF;
+            line-height: 1.4;
+        }
+
+        .success-message {
+            background: rgba(46, 204, 113, 0.15);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .success-message i {
+            font-size: 1.2rem;
+            color: #2ecc71;
+        }
+
+        .success-message p {
+            font-size: 0.85rem;
+            color: #2ecc71;
+        }
+
+        .error-message {
+            background: rgba(231, 76, 60, 0.15);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .error-message i {
+            font-size: 1.2rem;
+            color: #e74c3c;
+        }
+
+        .error-message p {
+            font-size: 0.85rem;
+            color: #e74c3c;
+        }
+
+        @media (max-width: 550px) {
+            .forgot-container {
+                padding: 25px;
+                margin: 70px auto 30px;
+            }
+            .logo a {
+                font-size: 1.6rem;
+            }
+            .forgot-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement">
+        <div class="announcement-track">
+            <i class="fas fa-key"></i> 🔐 Forgot Password? Don't worry! Enter your email and we'll help you reset it. 🔐 
+            <i class="fas fa-envelope"></i> Check your inbox for reset link 
+            <i class="fas fa-arrow-right"></i> 🔐 Forgot Password? Don't worry! Enter your email and we'll help you reset it. 🔐
+        </div>
+    </div>
+
+    <!-- Forgot Password Container -->
+    <div class="forgot-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html">BRANDIFY</a>
+        </div>
+
+        <div class="forgot-header">
+            <div class="badge">✦ RESET PASSWORD ✦</div>
+            <h1>Forgot Password?</h1>
+            <p>No worries! Enter your registered email address and we'll send you a link to reset your password.</p>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i>
+            <p>Reset link sent! Please check your email inbox.</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-circle"></i>
+            <p>Email not found. Please enter a registered email address.</p>
+        </div>
+
+        <form id="forgotForm">
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Enter your registered email *" required>
+            </div>
+
+            <button type="submit" class="reset-btn">
+                <i class="fas fa-paper-plane"></i> Send Reset Link
+            </button>
+        </form>
+
+        <div class="back-to-login">
+            <a href="log.html">
+                <i class="fas fa-arrow-left"></i> Back to Login
+            </a>
+        </div>
+
+        <div class="info-box">
+            <i class="fas fa-envelope"></i>
+            <p>We'll send a password reset link to your email. Please check your inbox (and spam folder) within 5 minutes.</p>
+        </div>
+    </div>
+
+    <script>
+        const forgotForm = document.getElementById('forgotForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        // Demo registered emails (for testing)
+        const registeredEmails = [
+            "demo@brandify.com",
+            "test@brandify.com",
+            "user@brandify.com",
+            "admin@brandify.com"
+        ];
+        
+        forgotForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            
+            // Hide any previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Validation
+            if (!email) {
+                errorMessage.style.display = 'flex';
+                errorMessage.querySelector('p').textContent = "❌ Please enter your email address.";
+                return;
+            }
+            
+            // Email format validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMessage.style.display = 'flex';
+                errorMessage.querySelector('p').textContent = "❌ Please enter a valid email address (e.g., name@example.com).";
+                return;
+            }
+            
+            // Check if email is registered (demo check)
+            const isRegistered = registeredEmails.includes(email.toLowerCase());
+            
+            if (isRegistered) {
+                // Success - Send reset link
+                successMessage.style.display = 'flex';
+                
+                // Show success with email
+                successMessage.querySelector('p').innerHTML = `✅ Reset link sent to <strong>${email}</strong>!<br>Please check your inbox.`;
+                
+                // Clear form
+                document.getElementById('email').value = '';
+                
+                // Optional: Simulate sending email (console log)
+                console.log(`Password reset link sent to: ${email}`);
+                console.log(`Reset link: https://brandify.com/reset-password?email=${encodeURIComponent(email)}&token=demo_token_123`);
+                
+                // Auto hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                // Email not found
+                errorMessage.style.display = 'flex';
+                errorMessage.querySelector('p').innerHTML = `❌ Email <strong>${email}</strong> is not registered with us.<br>Please sign up first or check your email address.`;
+                
+                // Auto hide error message after 4 seconds
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 4000);
+            }
+        });
+        
+        // Back to login link
+        document.querySelector('.back-to-login a').addEventListener('click', function(e) {
+            // Allow normal navigation to login.html
+            // No prevent default - let it go to login page
+        });
+    </script>
+</body>
+</html>

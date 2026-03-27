@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Contact | Brandify – Let's Connect & Create</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0F;
+            color: #E5E5E5;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid #1F1F2A;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFD966, #FF9F4A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #CCCCCC;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #FFD966;
+        }
+
+        .join-us-item a,
+        .login-item a {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .join-us-item a {
+            background: linear-gradient(135deg, #FFD966, #FF9F4A);
+            color: #0A0A0F !important;
+            box-shadow: 0 4px 12px rgba(255, 217, 102, 0.3);
+        }
+
+        .login-item a {
+            background: transparent;
+            border: 2px solid #FFD966;
+            color: #FFD966 !important;
+        }
+
+        .join-us-item a:hover,
+        .login-item a:hover {
+            transform: translateY(-2px);
+        }
+
+        .login-item a:hover {
+            background: #FFD966;
+            color: #0A0A0F !important;
+        }
+
+        /* Hero Section - Minimal & Bold */
+        .contact-hero {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .contact-hero .badge {
+            display: inline-block;
+            background: rgba(255, 217, 102, 0.12);
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #FFD966;
+            margin-bottom: 20px;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #FFD966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .contact-hero p {
+            font-size: 1.1rem;
+            color: #9AAEBF;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Contact Grid - Modern Layout */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            margin: 40px 0 60px;
+        }
+
+        /* Contact Cards - Elegant */
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: #13131F;
+            border-radius: 28px;
+            padding: 28px;
+            border: 1px solid #2A2A35;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-card:hover {
+            border-color: #FFD966;
+            transform: translateX(5px);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 217, 102, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon i {
+            font-size: 1.8rem;
+            color: #FFD966;
+        }
+
+        .card-content h4 {
+            font-size: 1.1rem;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .card-content p,
+        .card-content a {
+            color: #9AAEBF;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .card-content a:hover {
+            color: #FFD966;
+        }
+
+        /* Form Section - Clean & Modern */
+        .form-wrapper {
+            background: #13131F;
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid #2A2A35;
+        }
+
+        .form-wrapper h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+
+        .form-wrapper p {
+            color: #9AAEBF;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 20px;
+            background: #0A0A12;
+            border: 1px solid #2E2E3A;
+            border-radius: 20px;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD966;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            background: #FFD966;
+            color: #0A0A0F;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* Social Connect Section */
+        .social-connect {
+            background: linear-gradient(135deg, #111118, #0C0C14);
+            border-radius: 32px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+            border: 1px solid #2A2A35;
+        }
+
+        .social-connect h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .social-connect p {
+            color: #9AAEBF;
+            margin-bottom: 25px;
+        }
+
+        .social-connect-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-connect-icons a {
+            width: 48px;
+            height: 48px;
+            background: #1A1A26;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 1.3rem;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .social-connect-icons a:hover {
+            transform: translateY(-4px);
+        }
+
+        .social-connect-icons .ig:hover {
+            background: linear-gradient(45deg, #f09433, #d62976, #962fbf);
+            color: white;
+        }
+
+        .social-connect-icons .fb:hover {
+            background: #1877f2;
+            color: white;
+        }
+
+        .social-connect-icons .linktree:hover {
+            background: #39E09B;
+            color: #0A0A0F;
+        }
+
+        .social-connect-icons .li:hover {
+            background: #0077b5;
+            color: white;
+        }
+
+        .social-connect-icons .be:hover {
+            background: #1769ff;
+            color: white;
+        }
+
+        /* Map Section */
+        .map-section {
+            margin: 60px 0;
+        }
+
+        .map-section h3 {
+            font-size: 1.4rem;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .map-container {
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #2A2A35;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 380px;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #06060C;
+            padding: 48px 0 32px;
+            border-top: 1px solid #1F1F2A;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #FFD966;
+        }
+
+        .quick-links {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            gap: 12px 30px;
+        }
+
+        .quick-links a {
+            color: #BBBBBB;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .quick-links a:hover {
+            color: #FFD966;
+        }
+
+        .footer-copy {
+            text-align: center;
+            margin-top: 48px;
+            font-size: 0.75rem;
+            color: #6B6B7A;
+        }
+
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .contact-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .quick-links {
+                grid-template-columns: repeat(2, auto);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .quick-links {
+                justify-content: center;
+            }
+
+            .contact-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .card-icon {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="logo">BRANDIFY</div>
+            <ul class="nav-menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li class="join-us-item"><a href="joi.html"><i class="fas fa-user-plus"></i> Join Us</a></li>
+                <li class="login-item"><a href="log.html"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
+            </ul>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="contact-hero">
+            <div class="badge">✦ LET'S CONNECT ✦</div>
+            <h1>Let's create<br>something amazing</h1>
+            <p>Got a project in mind? I'm just one message away. Let's bring your vision to life with creative design
+                that stands out.</p>
+        </div>
+
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+            <!-- Left: Contact Cards -->
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="card-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="card-content">
+                        <h4>Phone / WhatsApp</h4>
+                        <a href="tel:+923416031279">+92 341 6031279</a>
+                        <p style="font-size: 0.75rem; margin-top: 5px;">Mon-Fri, 9am - 6pm</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="card-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="card-content">
+                        <h4>Email</h4>
+                        <a href="mailto:Brandefy.pk@gmail.com">Brandefy.pk@gmail.com</a>
+                        <p style="font-size: 0.75rem; margin-top: 5px;">I reply within 24 hours</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="card-content">
+                        <h4>Location</h4>
+                        <p>Bhawalpur, Pakistan</p>
+                        <p style="font-size: 0.75rem;">Available for remote work worldwide</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="card-icon"><i class="fas fa-clock"></i></div>
+                    <div class="card-content">
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 9am - 6pm</p>
+                        <p>Saturday: 10am - 3pm | Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Contact Form -->
+            <div class="form-wrapper">
+                <h3>Send a message</h3>
+                <p>Fill out the form below and I'll get back to you within 24 hours.</p>
+
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="fullName" placeholder="Your full name *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email address *" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Phone number">
+                        </div>
+                        <div class="form-group">
+                            <select id="service">
+                                <option value="">I'm interested in...</option>
+                                <option value="logo">Logo Design</option>
+                                <option value="branding">Brand Identity</option>
+                                <option value="uiux">UI/UX Design</option>
+                                <option value="web">Website Design</option>
+                                <option value="social">Social Media Design</option>
+                                <option value="other">Other / Not sure</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="4"
+                            placeholder="Tell me about your project, goals, and timeline... *" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Social Connect Section -->
+        <div class="social-connect">
+            <h3>Connect with me</h3>
+            <p>Follow me on social media for design inspiration, behind-the-scenes, and updates.</p>
+            <div class="social-connect-icons">
+                <a href="https://www.instagram.com/brandefy.pk/" target="_blank" class="ig"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/Brandefy.pk" target="_blank" class="fb"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://linktr.ee/Brandify.pk" target="_blank" class="linktree"><i class="fas fa-tree"></i></a>
+                <a href="https://www.linkedin.com/in/brandefy" target="_blank" class="li"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.behance.net/Brandiify" target="_blank" class="be"><i
+                        class="fab fa-behance"></i></a>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h3>📍 Based in Bhawalpur, serving worldwide</h3>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108718.29207128744!2d71.3984344778285!3d29.39805891805479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393bb01bb2957ebd%3A0x22995d52871f1cbe!2sBahawalpur%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">BRANDIFY</div>
+                    <p style="margin-top: 10px;">Design that Elevate Your Brand</p>
+                </div>
+                <div>
+                    <h4 style="color:#FFD966;">Quick Links</h4>
+                    <ul class="quick-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="joi.html">Join Us</a></li>
+                        <li><a href="log.html">Log In</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color:#FFD966;">Contact</h4>
+                    <p><i class="fas fa-phone"></i> +923416031279</p>
+                    <p><i class="fas fa-envelope"></i> Brandefy.pk@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-copy">© 2026 Brandify — Designer for Business Growth. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                alert(`✨ Thank you ${name}! Your message has been sent. I'll get back to you within 24 hours.\n\n📧 Brandefy.pk@gmail.com\n📞 +923416031279`);
+                contactForm.reset();
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+
+        // Nav links - Join Us / Log In alert
+        // document.querySelectorAll('.join-us-item a, .login-item a').forEach(link => {
+        //     link.addEventListener('click', (e) => {
+        //         e.preventDefault();
+        //         alert("This page is coming soon!");
+        //     });
+        // });
+    </script>
+</body>
+
+</html>

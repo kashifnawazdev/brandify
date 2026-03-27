@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Portfolio | Brandify – Explore My Work</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0F;
+            color: #E5E5E5;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Announcement Bar */
+        .announcement {
+            background: #1A1A2A;
+            color: #FFD966;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255, 217, 102, 0.2);
+        }
+
+        .announcement-track {
+            display: inline-block;
+            animation: scrollMarquee 20s linear infinite;
+            padding-left: 20px;
+        }
+
+        .announcement-track i {
+            margin: 0 12px;
+            color: #FFD966;
+        }
+
+        @keyframes scrollMarquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid #1F1F2A;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFD966, #FF9F4A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #CCCCCC;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #FFD966;
+        }
+
+        .join-us-item a,
+        .login-item a {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .join-us-item a {
+            background: linear-gradient(135deg, #FFD966, #FF9F4A);
+            color: #0A0A0F !important;
+            box-shadow: 0 4px 12px rgba(255, 217, 102, 0.3);
+        }
+
+        .login-item a {
+            background: transparent;
+            border: 2px solid #FFD966;
+            color: #FFD966 !important;
+        }
+
+        /* Hero Section */
+        .portfolio-hero {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .portfolio-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #FFD966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-hero p {
+            font-size: 1rem;
+            color: #9AAEBF;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Platform Cards - Full Rectangle with Left Circle Logo */
+        .platforms-list {
+            margin: 50px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .platform-card {
+            background: #13131F;
+            border-radius: 24px;
+            padding: 28px 32px;
+            border: 1px solid #2A2A35;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .platform-card:hover {
+            transform: translateX(8px);
+            border-color: #FFD966;
+            background: #181824;
+        }
+
+        /* Card Inner Layout */
+        .card-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        /* Circle Logo */
+        .circle-logo {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #1F1F2A, #15151F);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+
+        .platform-card:hover .circle-logo {
+            background: #FFD966;
+        }
+
+        .circle-logo img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .circle-logo i {
+            font-size: 2rem;
+            color: #FFD966;
+        }
+
+        .platform-card:hover .circle-logo i {
+            color: #0A0A0F;
+        }
+
+        .platform-card:hover .circle-logo img {
+            filter: brightness(0);
+        }
+
+        /* Platform Name */
+        .platform-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            transition: 0.2s;
+        }
+
+        .platform-card:hover .platform-name {
+            color: #FFD966;
+        }
+
+        /* Short Paragraph - Longer Text */
+        .platform-desc {
+            font-size: 0.95rem;
+            color: #9AAEBF;
+            line-height: 1.6;
+            padding-left: 85px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 50px 0;
+            margin: 40px 0;
+            border-top: 1px solid #1F1F2A;
+            border-bottom: 1px solid #1F1F2A;
+        }
+
+        .cta-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #FFD966;
+            color: #0A0A0F;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .cta-btn:hover {
+            background: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #06060C;
+            padding: 40px 0 30px;
+            border-top: 1px solid #1F1F2A;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFD966;
+        }
+
+        .quick-links {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            gap: 12px 25px;
+        }
+
+        .quick-links a {
+            color: #BBBBBB;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .quick-links a:hover {
+            color: #FFD966;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #13131F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-copy {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.7rem;
+            color: #6B6B7A;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .portfolio-hero h1 {
+                font-size: 2rem;
+            }
+
+            .platform-name {
+                font-size: 1.2rem;
+            }
+
+            .platform-desc {
+                padding-left: 0;
+                margin-top: 12px;
+            }
+
+            .card-row {
+                flex-wrap: wrap;
+            }
+
+            .quick-links {
+                grid-template-columns: repeat(2, auto);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement">
+        <div class="announcement-track">
+            <i class="fas fa-star"></i> ✨ Explore my complete portfolio | Click any card to visit platform ✨
+            <i class="fas fa-arrow-right"></i> ✨ Available for freelance projects | Let's create something amazing ✨
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="logo">BRANDIFY</div>
+            <ul class="nav-menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="join-us-item"><a href="joi.html"><i class="fas fa-user-plus"></i> Join Us</a></li>
+                <li class="login-item"><a href="log.html"><i class="fas fa-sign-in-alt"></i> Log In</a></li>
+            </ul>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="portfolio-hero">
+            <h1>Explore My Creative Universe</h1>
+            <p>Click on any card to view my complete portfolio across different platforms</p>
+        </div>
+
+        <!-- Platform Cards - Full Rectangle Layout with Longer Paragraphs -->
+        <div class="platforms-list">
+
+            <!-- Behance Card -->
+            <a href="https://www.behance.net/Brandiify" target="_blank" class="platform-card">
+                <div class="card-row">
+                    <div class="circle-logo">
+                        <img src="4.png" alt="Behance"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fab fa-behance\'></i>'">
+                    </div>
+                    <div class="platform-name">Behance</div>
+                </div>
+                <div class="platform-desc">
+                    Explore my complete design portfolio on Behance — where I showcase all my creative projects
+                    including logo designs, brand identity systems, UI/UX case studies, social media campaigns, and
+                    marketing materials. Each project includes detailed case studies, mood boards, color palettes,
+                    typography selections, and final deliverables. You'll see the full creative process from concept to
+                    completion, along with client feedback and project results.
+                </div>
+            </a>
+
+            <!-- Linktree Card -->
+            <a href="https://linktr.ee/Brandify.pk" target="_blank" class="platform-card">
+                <div class="card-row">
+                    <div class="circle-logo">
+                        <img src="3.png" alt="Linktree"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-tree\'></i>'">
+                    </div>
+                    <div class="platform-name">Linktree</div>
+                </div>
+                <div class="platform-desc">
+                    Find all my important links conveniently gathered in one place through Linktree. This includes
+                    direct access to my Behance portfolio, LinkedIn professional profile, Instagram design updates,
+                    Facebook page, and contact information. It's the easiest way to connect with me across all platforms
+                    and stay updated with my latest work, design insights, and creative journey. Bookmark this for quick
+                    access to everything Brandify.
+                </div>
+            </a>
+
+            <!-- LinkedIn Card -->
+            <a href="https://www.linkedin.com/in/brandefy" target="_blank" class="platform-card">
+                <div class="card-row">
+                    <div class="circle-logo">
+                        <img src="5.png" alt="LinkedIn"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fab fa-linkedin-in\'></i>'">
+                    </div>
+                    <div class="platform-name">LinkedIn</div>
+                </div>
+                <div class="platform-desc">
+                    Connect with me professionally on LinkedIn to explore my career journey, work experience, and
+                    professional achievements. Here you'll find recommendations from past clients, detailed project
+                    highlights, and insights into my design philosophy. I regularly share design industry trends,
+                    creative tips, and behind-the-scenes looks at my process. Let's build a meaningful professional
+                    network and collaborate on exciting opportunities.
+                </div>
+            </a>
+
+            <!-- Hire Me Card -->
+            <a href="hire.html" class="platform-card">
+                <div class="card-row">
+                    <div class="circle-logo">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="platform-name">Hire Me</div>
+                </div>
+                <div class="platform-desc">
+                    Ready to take your brand to the next level? I offer professional design services including logo
+                    design, complete brand identity packages, UI/UX design for web and mobile apps, social media content
+                    creation, and marketing materials like flyers and posters. I work closely with clients to understand
+                    their vision and deliver designs that not only look stunning but also drive results. Let's discuss
+                    your project and create something extraordinary together!
+                </div>
+            </a>
+
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>Ready to elevate your brand?</h3>
+            <p>Get custom designs that convert and make your brand stand out from the competition.</p>
+            <a href="hire.html" class="cta-btn">Hire Me →</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">BRANDIFY</div>
+                    <p style="margin-top: 8px;">Design that Elevate Your Brand</p>
+                </div>
+                <div>
+                    <h4 style="color:#FFD966;">Quick Links</h4>
+                    <ul class="quick-links">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="hire.html">Hire Me</a></li>
+                        <li><a href="joi.html">Join Us</a></li>
+                        <li><a href="log.html">Log In</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color:#FFD966;">Contact</h4>
+                    <p><i class="fas fa-phone"></i> +923416031279</p>
+                    <p><i class="fas fa-envelope"></i> Brandefy.pk@gmail.com</p>
+                </div>
+                <div>
+                    <h4 style="color:#FFD966;">Follow</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/brandefy.pk/" class="social-icon"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/Brandefy.pk" class="social-icon"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://linktr.ee/Brandify.pk" class="social-icon"><i class="fas fa-tree"></i></a>
+                        <a href="https://www.linkedin.com/in/brandefy" class="social-icon"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.behance.net/Brandiify" class="social-icon"><i
+                                class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copy">© 2026 Brandify — Designer for Business Growth. All rights reserved.</div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
